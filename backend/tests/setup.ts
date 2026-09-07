@@ -1,8 +1,8 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { MongoClient } from 'mongodb';
 import { testUtils } from 'better-auth/plugins';
-import { createAuth } from '../../src/utils/createAuth.ts';
-import { mailer } from './mailer.ts';
+import { createAuth } from '../src/utils/createAuth.ts';
+import { mailer } from './integration/mailer.ts';
 
 import type { TestHelpers } from 'better-auth/plugins';
 

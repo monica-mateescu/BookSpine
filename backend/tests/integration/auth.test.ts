@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 
-import { setupTest, teardownTest } from './setup';
+import { setupTest, teardownTest } from '../setup';
 
 import type { TestHelpers } from 'better-auth/plugins';
 

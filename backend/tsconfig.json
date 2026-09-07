@@ -24,7 +24,9 @@
     /* Paths */
     "paths": {
       "#*": ["./src/*"] // Defines internal path aliases with '#' to avoid conflict with '@'
-    }
+    },
+    /* Type Checking */
+    "types": ["vitest/globals"] // Includes Vitest globals for testing
   },
   "include": ["src"] // Files to include in compilation
 }

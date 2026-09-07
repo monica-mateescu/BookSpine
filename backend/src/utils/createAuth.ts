@@ -5,7 +5,7 @@ import type { BetterAuthPlugin } from 'better-auth';
 import { createAuthMiddleware } from 'better-auth/api';
 import { APIError } from 'better-auth/api';
 import type { Mailer } from '#types';
-import { getEmailHtmlTemplate } from '#utils';
+import { getEmailHtmlTemplate } from './emailTemplate.ts';
 
 type CreateAuthOptions = {
   db: Db;

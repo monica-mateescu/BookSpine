@@ -5,6 +5,6 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     isolate: true,
-    setupFiles: './tests/integration/setup.ts'
+    setupFiles: './tests/setup.ts'
   }
 });

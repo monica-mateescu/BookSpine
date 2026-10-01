@@ -31,7 +31,9 @@ const ForgotPasswordForm = () => {
           "Something went wrong. Failed to send password reset email.",
       );
     } else {
-      setSuccess("We've sent a password reset link. Please check your inbox.");
+      setSuccess(
+        "If an account exists for this email address, a password reset link has been sent. Please check your inbox.",
+      );
       setEmail("");
     }
 

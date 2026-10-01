@@ -79,8 +79,9 @@ export const sendContactMessage: RequestHandler<{}, { success: boolean } | { mes
 
     try {
       await sendEmail({
+        from: 'Website <website@bookspine.net>',
         to: EMAIL_TO,
-        subject: `BookSpine - ${subject}`,
+        subject: `New contact message - ${subject}`,
         html: emailHtml
       });
     } catch (error) {

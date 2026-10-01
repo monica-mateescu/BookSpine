@@ -99,15 +99,12 @@ describe("SignUpForm", () => {
     fireEvent.click(submitBtn);
 
     await waitFor(() => {
-      expect(screen.getByText(/Registration successful/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          /Registration successful. Please check your email to verify your account./i,
+        ),
+      ).toBeInTheDocument();
     });
-
-    await waitFor(
-      () => {
-        expect(mockedNavigate).toHaveBeenCalledWith("/");
-      },
-      { timeout: 2000 },
-    );
   });
 
   /* Test 4:Validate that an existing email triggers the expected API error message. */

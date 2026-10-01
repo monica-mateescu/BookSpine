@@ -1,12 +1,9 @@
 import { BASE_APP_URL } from "@/config";
-import { authClient, consumeRedirectTo } from "@utils";
+import { authClient } from "@utils";
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router";
 import { Link } from "react-router";
 
 function RegisterForm() {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lastName, setLastName] = useState("");
@@ -36,32 +33,26 @@ function RegisterForm() {
     setSubmitting(true);
 
     try {
-      const redirectTo = consumeRedirectTo();
       const callbackURL = `${BASE_APP_URL}/email-verified`;
-      const { error } = lastName
-        ? await authClient.signUp.email({
-            email: email.trim(),
-            password,
-            name: firstName,
-            lastName: lastName,
-            callbackURL,
-          })
-        : await authClient.signUp.email({
-            email: email.trim(),
-            password,
-            name: firstName,
-            callbackURL,
-          });
+      const payload = {
+        email: email.trim(),
+        password,
+        name: firstName,
+        ...(lastName ? { lastName } : {}),
+        callbackURL,
+      };
+      const { error } = await authClient.signUp.email(payload);
 
       if (error) {
-        setError(error.message || "Registration failed");
+        setError(error.message || "Something went wrong.");
         return;
       }
 
-      setSuccess("Registration successful.");
-      setTimeout(() => navigate(redirectTo), 1000);
+      setSuccess(
+        "Registration successful. Please check your email to verify your account.",
+      );
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Registration failed");
+      setError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
       setSubmitting(false);
     }

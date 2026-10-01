@@ -58,7 +58,8 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
     session: {
       cookieCache: {
         enabled: true,
-        maxAge: 5 * 60
+        maxAge: 5 * 60,
+        strategy: 'jwe'
       }
     },
     user: {
@@ -126,12 +127,15 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
       }
     },
     advanced: {
-      defaultCookieAttributes: {
-        sameSite: 'lax',
-        secure: isProduction
+      database: {
+        joins: true
       },
       ipAddress: {
         ipAddressHeaders: ['x-forwarded-for']
+      },
+      defaultCookieAttributes: {
+        sameSite: 'lax',
+        secure: isProduction
       }
     },
     hooks: {

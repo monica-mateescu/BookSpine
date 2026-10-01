@@ -9,7 +9,6 @@ function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string>("");
-  const [success, setSuccess] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
 
   const canSubmit = useMemo(() => {
@@ -25,26 +24,30 @@ function SignInForm() {
     e.preventDefault();
 
     setError("");
-    setSuccess("");
     setSubmitting(true);
 
     try {
       const redirectTo = consumeRedirectTo();
       const { error } = await authClient.signIn.email({
         email: email.trim(),
-        password: password,
+        password,
         callbackURL: redirectTo,
       });
 
       if (error) {
-        setError(error.message || "Login failed");
+        if (error.code === "EMAIL_NOT_VERIFIED") {
+          setError(
+            "Your email address is not verified. Please check your email to verify your account.",
+          );
+        } else {
+          setError(error.message || "Something went wrong.");
+        }
         return;
       }
 
-      setSuccess("Login successful.");
-      setTimeout(() => navigate(redirectTo), 1000);
+      navigate(redirectTo);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Login failed");
+      setError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
       setSubmitting(false);
     }
@@ -69,25 +72,6 @@ function SignInForm() {
               />
             </svg>
             <span>{error}</span>
-          </div>
-        )}
-
-        {success && (
-          <div role="alert" className="alert alert-success mb-5">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 shrink-0 stroke-current"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span>{success}</span>
           </div>
         )}
 

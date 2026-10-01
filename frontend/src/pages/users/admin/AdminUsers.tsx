@@ -80,6 +80,9 @@ const Users = () => {
                   <th>Name</th>
                   <th>Email</th>
                   <th>Role</th>
+                  <th>Created At</th>
+                  <th>Updated At</th>
+                  <th>Deleted At</th>
                 </tr>
               </thead>
               <tbody>

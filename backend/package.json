@@ -66,6 +66,7 @@
     "vitest": "^4.1.2"
   },
   "dependencies": {
+    "@better-auth/infra": "^0.4.13",
     "better-auth": "^1.5.5",
     "cloudinary": "^2.9.0",
     "cors": "^2.8.6",
@@ -77,5 +78,9 @@
     "slugify": "^1.6.9",
     "socket.io": "^4.8.3",
     "zod": "^4.3.6"
+  },
+  "allowScripts": {
+    "mongodb-memory-server@11.0.1": true,
+    "fsevents@2.3.3": true
   }
 }

@@ -95,7 +95,7 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
             buttonUrl: url,
             buttonText: 'Change email address'
           });
-          mailer.sendEmail({
+          void mailer.sendEmail({
             to: user.email,
             subject: 'Change your email address',
             html: emailHtml
@@ -118,7 +118,7 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
           buttonUrl: url,
           buttonText: 'Confirm email address'
         });
-        mailer.sendEmail({
+        void mailer.sendEmail({
           to: user.email,
           subject: 'Confirm your email address',
           html: emailHtml

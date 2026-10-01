@@ -34,6 +34,8 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
     trustedOrigins,
     emailAndPassword: {
       enabled: true,
+      requireEmailVerification: true,
+      autoSignIn: false,
       sendResetPassword: async ({ user, url }) => {
         const emailHtml = getEmailHtmlTemplate({
           contentHtml: `
@@ -103,7 +105,7 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
     },
     emailVerification: {
       sendOnSignUp: true,
-      autoSigninAfterVerification: true,
+      autoSigninAfterVerification: false,
       sendVerificationEmail: async ({ user, url }) => {
         const emailHtml = getEmailHtmlTemplate({
           contentHtml: `

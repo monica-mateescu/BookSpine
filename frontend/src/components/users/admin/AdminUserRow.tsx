@@ -14,6 +14,15 @@ const UserRow = ({ index, user, onDelete, onRestore }: UserRowProps) => {
       </td>
       <td>{user.email}</td>
       <td>{user.role}</td>
+      <td>
+        {user.createdAt ? new Date(user.createdAt).toLocaleString() : "-"}
+      </td>
+      <td>
+        {user.updatedAt ? new Date(user.updatedAt).toLocaleString() : "-"}
+      </td>
+      <td>
+        {user.deletedAt ? new Date(user.deletedAt).toLocaleString() : "-"}
+      </td>
       <th>
         <div className="flex justify-end gap-3">
           {!user.deletedAt ? (

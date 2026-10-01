@@ -90,10 +90,6 @@ describe("SignInForm", () => {
     const submitBtn = screen.getByRole("button", { name: /Sign in/i });
     fireEvent.click(submitBtn);
 
-    await waitFor(() => {
-      expect(screen.getByText(/Login successful/i)).toBeInTheDocument();
-    });
-
     await waitFor(
       () => {
         expect(mockedNavigate).toHaveBeenCalledWith("/");

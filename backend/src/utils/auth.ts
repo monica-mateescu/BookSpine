@@ -32,9 +32,7 @@ export const auth = createAuth({
           action: 'block'
         },
         emailValidation: {
-          enabled: true,
-          strictness: 'medium',
-          action: 'block'
+          enabled: false
         },
         // Location-based
         impossibleTravel: {

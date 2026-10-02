@@ -2,10 +2,9 @@
   "compilerOptions": {
     /* Base Options: */
     "esModuleInterop": true, // Enables default imports from CommonJS modules
-    "lib": ["ESNext"], // Includes modern ES features in the type system
-    "target": "ESNext", // Sets the JavaScript version output
+    "lib": ["ES2022"],
+    "target": "ES2022",
     "skipLibCheck": true, // Skips type checking of declaration files (*.d.ts)
-    "allowJs": true, // Allows JavaScript files in the project
     "resolveJsonModule": true, // Allows importing JSON modules
     "moduleDetection": "force", // Treats all files as modules regardless of import/export
     "isolatedModules": true, // Ensures each file can be transpiled independently
@@ -17,7 +16,7 @@
     /* Node Options*/
     "allowImportingTsExtensions": true, // Allows importing files with .ts extensions
     "rewriteRelativeImportExtensions": true, // Rewrites relative imports with correct extensions
-    "module": "preserve", // Preserves ES module syntax (important for native ESM)
+    "module": "NodeNext",
     "noEmit": false, // Enables output generation
     "rootDir": "./src", // Explicit root directory for source files
     "outDir": "dist", // Output directory for compiled JavaScript
@@ -26,7 +25,7 @@
       "#*": ["./src/*"] // Defines internal path aliases with '#' to avoid conflict with '@'
     },
     /* Type Checking */
-    "types": ["vitest/globals"] // Includes Vitest globals for testing
+    "types": ["node"]
   },
   "include": ["src"] // Files to include in compilation
 }

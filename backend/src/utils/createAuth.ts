@@ -131,7 +131,7 @@ export const createAuth = <P extends BetterAuthPlugin[] = []>({
         joins: true
       },
       ipAddress: {
-        ipAddressHeaders: ['x-forwarded-for']
+        ipAddressHeaders: ['x-real-ip']
       },
       defaultCookieAttributes: {
         sameSite: 'lax',
